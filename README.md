@@ -50,7 +50,7 @@ Help Options:
 Arguments:
   output:            output filepath
 
-% ./knafeh -i in.mp4  -c vp8 --b:a 96 --ss 5 --to 6 out.webm
+% ./knafeh -i in.mp4  -c vp8 --ss 5 --to 10 out.webm
 ```
 
 ## License

@@ -7,18 +7,10 @@ import (
 	"log"
 	"os"
 	"strings"
-
-	flag "github.com/jessevdk/go-flags"
 )
 
 func main() {
-	var opts options
-	_, err := flag.Parse(&opts)
-	if err != nil {
-		os.Exit(1)
-	}
-
-	inputs, err := ParseOpts(opts)
+	inputs, err := ParseFlags()
 	if err != nil {
 		log.Fatal(err)
 	}

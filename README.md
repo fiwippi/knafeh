@@ -19,38 +19,45 @@ $ make build
 ```
 
 ## Usage
-```sh
-% ./knafeh --help
-Usage:
-  knafeh [OPTIONS] [output]
+```console
+$ ./knafeh --help
+Usage: ./knafeh -i in.mp4 out.webm
+  -an
+        removes audio from the video
+  -b:a int
+        bitrate of the audio in kbps (default 96)
+  -c:v string
+        which video codec to use i.e. "vp8/vp9/av1" (default "vp9")
+  -crf int
+        quality of the video from 0 (best) to 63 (worst) (default 40)
+  -crop string
+        crops the video in the format "x:y:width:height"
+  -deinterlace
+        deinterlaces the video
+  -denoise
+        denoises the video
+  -dub string
+        filepath to the dubbed file
+  -i string
+        input filepath
+  -loop
+        if the dubbed audio is shorter than the video or vice versa this will loop the streams to achieve the full length
+  -r float
+        framerate of the video "-1" means unset (default -1)
+  -scale string
+        resizes the video, specified as "width:height"
+  -shortest
+        stops the output at the shortest video/audio stream (when dubbing)
+  -sp
+        use single pass encoding, output quality is lower but is quicker to encode
+  -ss string
+        when to trim the video, accepts "HH:MM:SS.MS/HH:MM:SS/S"
+  -title string
+        metadata title of the video
+  -to string
+        when to stop trimming the video, accepts "HH:MM:SS.MS/HH:MM:SS/S"
 
-Application Options:
-  -i, --input=       input filepath
-      --sp           use single pass encoding, output quality is lower but is quicker to encode
-  -t, --title=       metadata title of the video
-  -c, --codec=       which video codec to use i.e. "vp8/vp9/av1" (default: vp9)
-      --crf=         quality of the video from 0 (best) to 63 (worst) (default: 40)
-  -r, --framerate=   framerate of the video "-1" means unset (default: -1)
-      --b:a=         bitrate of the audio in kbps (default: 96)
-      --an           removes audio from the video
-      --denoise      denoises the video
-      --deinterlace  deinterlaces the video
-      --resize=      resizes the video, specified as "width:height"
-      --ss=          when to trim the video, accepts "HH:MM:SS.MS/HH:MM:SS/S"
-      --to=          when to stop trimming the video, accepts "HH:MM:SS.MS/HH:MM:SS/S"
-      --dubfp=       filepath to the dubbed file
-      --loop         if the dubbed audio is shorter than the video or vice versa this will loop the streams to achieve
-                     the full length
-      --shortest     stops the output at the shortest video/audio stream (when dubbing)
-      --crop=        crops the video in the format "x:y:width:height"
-
-Help Options:
-  -h, --help         Show this help message
-
-Arguments:
-  output:            output filepath
-
-% ./knafeh -i in.mp4  -c vp8 --b:a 96 --ss 5 --to 6 out.webm
+$ ./knafeh -i in.mp4 -c:v vp8 -b:a 96 -ss 5 -to 6 out.webm
 ```
 
 ## License
